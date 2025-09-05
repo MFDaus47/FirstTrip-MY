@@ -28,6 +28,13 @@ services:
       - mongo
     environment:
       - MONGO_URI=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/
+  frontend:
+    build: ./frontend
+    container_name: firsttrip-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
 
 volumes:
   mongo-data:
