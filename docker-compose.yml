@@ -19,6 +19,15 @@ services:
       ME_CONFIG_BASICAUTH_USERNAME: ${MONGODB_USERNAME}
       ME_CONFIG_BASICAUTH_PASSWORD: ${MONGODB_PASSWORD}
       ME_CONFIG_MONGODB_URL: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/
+  backend:
+    build: ./backend
+    container_name: firsttrip-backend
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/
 
 volumes:
   mongo-data:
