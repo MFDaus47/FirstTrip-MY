@@ -23,7 +23,7 @@ services:
     build: ./backend
     container_name: firsttrip-backend
     ports:
-      - "4000:4000"
+      - "${PORT_BACKEND}:${PORT_BACKEND}"
     depends_on:
       - mongo
     environment:
