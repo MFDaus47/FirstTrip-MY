@@ -6,7 +6,12 @@ router.get("/", (req, res) => {
 });
 
 router.post("/trips/estimate", (req, res) => {
-  res.json({ message: "This is the estimation" });
+  res.json({
+    origin: req.body.origin,
+    destination: req.body.destination,
+    transport_mode: req.body.transport_mode,
+    estimated_cost: 100,
+  });
 });
 
 module.exports = router;
