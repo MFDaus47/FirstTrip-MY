@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Input } from "./ui/input";
 import API from "../api/api";
 
-function TripForm({ setResult }) {
+export default function TripForm({ setResult }) {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [transport, setTransport] = useState("bus");
@@ -23,14 +25,14 @@ function TripForm({ setResult }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <Input
         type="text"
         placeholder="Origin"
         value={origin}
         onChange={(e) => setOrigin(e.target.value)}
         required
       />
-      <input
+      <Input
         type="text"
         placeholder="Destination"
         value={destination}
@@ -47,5 +49,3 @@ function TripForm({ setResult }) {
     </form>
   );
 }
-
-export default TripForm;
