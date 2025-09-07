@@ -19,22 +19,41 @@ services:
       ME_CONFIG_BASICAUTH_USERNAME: ${MONGODB_USERNAME}
       ME_CONFIG_BASICAUTH_PASSWORD: ${MONGODB_PASSWORD}
       ME_CONFIG_MONGODB_URL: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/
+
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
     container_name: firsttrip-backend
     ports:
       - "${PORT_BACKEND}:${PORT_BACKEND}"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - backend_node_modules:/app/node_modules
     depends_on:
       - mongo
+    command: sh -c "npm install && npm run dev"
+
     environment:
       - MONGO_URI=mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/
+
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev #remove this when in prod
     container_name: firsttrip-frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - frontend_node_modules:/app/node_modules
     ports:
       - "3000:80"
     depends_on:
       - backend
+    command: sh -c "npm install && npm run dev"
 
 volumes:
   mongo-data:
+  frontend_node_modules:
+  backend_node_modules:
