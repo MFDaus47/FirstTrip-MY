@@ -1,12 +1,21 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import API from "../api/api";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "./ui/button";
 
 export default function TripForm({ setResult }) {
   const {
     register,
     handleSubmit,
+    control,
     watch,
     formState: { errors },
   } = useForm();
@@ -40,14 +49,28 @@ export default function TripForm({ setResult }) {
         {...register("destination", { required: true })}
       />
       {errors.destination && <span>Destination is required</span>}
-
-      <select {...register("transport")}>
-        <option value="bus">Bus</option>
-        <option value="train">Train</option>
-        <option value="car">Car</option>
-        <option value="plane">Plane</option>
-      </select>
-      <button type="submit">Estimate Trip</button>
+      <Controller
+        name="transport"
+        control={control}
+        rules={{ required: true }}
+        render={({ field }) => (
+          <Select onValueChange={field.onChange} value={field.value}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select Transport mode" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="bus">Bus</SelectItem>
+              <SelectItem value="train">Train</SelectItem>
+              <SelectItem value="car">Car</SelectItem>
+              <SelectItem value="plane">Plane</SelectItem>
+            </SelectContent>
+          </Select>
+        )}
+      />
+      {errors.transport && <span>Transport is required</span>}
+      <div>
+        <Button type="submit">Estimate Trip</Button>
+      </div>
     </form>
   );
 }
