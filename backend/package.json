@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "test": "jest --watchAll --verbose"
+    "test": "jest --watchAll --verbose",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +19,8 @@
     "jest": "^30.1.3",
     "mongoose": "^8.18.0",
     "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0"
   }
 }
