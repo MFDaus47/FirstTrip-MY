@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const connectDB = require("./config/db.config");
-const testRoute = require("./routes/test");
+const testRoute = require("./routes/trip_estimate");
 const errorHandler = require("./middlewares/error.middleware");
 const logger = require("./middlewares/logger.middleware");
 
