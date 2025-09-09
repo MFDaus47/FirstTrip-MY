@@ -1,15 +1,5 @@
 {
   "name": "frontend-vite",
-  "name": "frontend-vite",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -19,11 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@radix-ui/react-dropdown-menu": "^2.1.16",
-    "@radix-ui/react-select": "^2.2.6",
-    "@radix-ui/react-slot": "^1.2.3",
-    "@tabler/icons-react": "^3.34.1",
-    "@tailwindcss/vite": "^4.1.13",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.3",
