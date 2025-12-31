@@ -11,6 +11,11 @@ router.post("/trips/estimate", (req, res) => {
     destination: req.body.destination,
     transport_mode: req.body.transport_mode,
     estimated_cost: 100,
+    // Real expected result:
+    // - Distance in KM / Miles
+    // - Available transportation option
+    // - Includes Transit/Changing from one transportation, to another transportation
+    // -
   });
 });
 

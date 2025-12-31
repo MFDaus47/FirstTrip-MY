@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "./ui/button";
 
-export default function TripForm({ setResult }) {
+export default function TripForm({ setResult, setMapData }) {
   const {
     register,
     handleSubmit,
@@ -30,6 +30,11 @@ export default function TripForm({ setResult }) {
         transport_mode: data.transport,
       });
       setResult(res.data);
+      setMapData({
+        origin: data.origin || null,
+        destination: data.destination || null,
+        transport_mode: data.transport,
+      });
     } catch (err) {
       console.error(err);
       alert("Failed to estimate trip");
